@@ -32,17 +32,26 @@ function saveBug(e) {
 }
 
 function setStatusClosed(id) {
-  let bugs = JSON.parse(localStorage.getItem("bugs"));
-  console.log(bugs);
-
-  for (i = 0; i < bugs.length; i++) {
-    if (bugs[i].id == id) {
-      bugs[i].status = "Closed";
-    }
-  }
-  localStorage.setItem("bugs", JSON.stringify(bugs));
-
-  fetchBugs();
+  //   let bugs = JSON.parse(localStorage.getItem("bugs"));
+  //   console.log(bugs);
+  //   for (i = 0; i < bugs.length; i++) {
+  //     if (bugs[i].id == id) {
+  //       bugs[i].status = "Closed";
+  //     }
+  //   }
+  //   localStorage.setItem("bugs", JSON.stringify(bugs));
+  //   fetchBugs();
+}
+function deleteBugs(id) {
+  //   let bugs = JSON.parse(localStorage.getItem("bugs"));
+  //   console.log(bugs);
+  //   for (i = 0; i < bugs.length; i++) {
+  //     if (bugs[i].id == id) {
+  //       bugs[i].splice(i, 1);
+  //     }
+  //   }
+  //   localStorage.setItem("bugs", JSON.stringify(bugs));
+  //   fetchBugs();
 }
 
 function fetchBugs() {
@@ -64,7 +73,7 @@ function fetchBugs() {
         <h3>${desc}</h3>
         <p><span class="glypnicon glypnicon-time"></span>${severity}</p>
         <p><span class="glypnicon glypnicon-user"></span>${assignedTo}</p>
-        <a href="#" onclick="setStatusClosed(${id})" class="btn btn-warning">Close</a>
+        <a href="#" onClick="setStatusClosed(${id})" class="btn btn-warning">Close</a>
         <a href="#" onclick="deleteBugs(${id})" class="btn btn-danger">Delete</a>
         </div>
         `;
