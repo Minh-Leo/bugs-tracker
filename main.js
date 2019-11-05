@@ -32,26 +32,28 @@ function saveBug(e) {
 }
 
 function setStatusClosed(id) {
-  //   let bugs = JSON.parse(localStorage.getItem("bugs"));
-  //   console.log(bugs);
-  //   for (i = 0; i < bugs.length; i++) {
-  //     if (bugs[i].id == id) {
-  //       bugs[i].status = "Closed";
-  //     }
+  var bugs = JSON.parse(localStorage.getItem("bugs"));
+  // for (i = 0; i < bugs.length; i++) {
+  //   if (bugs[i].id == id) {
+  //     bugs[i].status = "Closed";
   //   }
-  //   localStorage.setItem("bugs", JSON.stringify(bugs));
-  //   fetchBugs();
+  // }
+  bugs.find(bug => bug.id == id).status = "Closed";
+  localStorage.setItem("bugs", JSON.stringify(bugs));
+  fetchBugs();
 }
+
 function deleteBugs(id) {
-  //   let bugs = JSON.parse(localStorage.getItem("bugs"));
-  //   console.log(bugs);
-  //   for (i = 0; i < bugs.length; i++) {
-  //     if (bugs[i].id == id) {
-  //       bugs[i].splice(i, 1);
-  //     }
+  let bugs = JSON.parse(localStorage.getItem("bugs"));
+  // for (i = 0; i < bugs.length; i++) {
+  //   if (bugs[i].id == id) {
+  //     bugs.splice(i, 1);
   //   }
-  //   localStorage.setItem("bugs", JSON.stringify(bugs));
-  //   fetchBugs();
+  // }
+  let index = bugs.findIndex(bug => bug.id == id);
+  bugs.splice(index, 1);
+  localStorage.setItem("bugs", JSON.stringify(bugs));
+  fetchBugs();
 }
 
 function fetchBugs() {
@@ -71,10 +73,10 @@ function fetchBugs() {
         <h6>Bugs ID: ${id}</h6>
         <p><span class="label label-info">${status}</span></p>
         <h3>${desc}</h3>
-        <p><span class="glypnicon glypnicon-time"></span>${severity}</p>
-        <p><span class="glypnicon glypnicon-user"></span>${assignedTo}</p>
-        <a href="#" onClick="setStatusClosed(${id})" class="btn btn-warning">Close</a>
-        <a href="#" onclick="deleteBugs(${id})" class="btn btn-danger">Delete</a>
+        <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
+        <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
+        <a href="#" onclick="setStatusClosed('${id}')" class="btn btn-warning">Close</a>
+        <a href="#" onclick="deleteBugs('${id}')" class="btn btn-danger">Delete</a>
         </div>
         `;
   }

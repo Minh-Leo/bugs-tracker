@@ -1,0 +1,17 @@
+.jumbotron {
+  padding: 20px;
+}
+
+.m-5 {
+  margin-left: 20px;
+}
+
+.footer {
+  margin-left: 20px;
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+}
+.footer p {
+  font-size: 16px;
+}
